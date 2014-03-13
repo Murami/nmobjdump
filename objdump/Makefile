@@ -5,7 +5,7 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Wed Mar 12 23:08:12 2014 
+## Last update Thu Mar 13 18:52:11 2014 
 ##
 
 ## FILES
@@ -18,7 +18,10 @@ SRC		=	main			\
 			map			\
 			32-bit/objdump32	\
 			32-bit/dump_section	\
-			32-bit/load
+			32-bit/load		\
+			64-bit/objdump64	\
+			64-bit/dump_section	\
+			64-bit/load
 
 SRC_EXT		=	.c
 

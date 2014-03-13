@@ -5,7 +5,7 @@
 ** Login   <otoshigami@epitech.net>
 **
 ** Started on  Wed Mar 12 22:35:59 2014
-** Last update Wed Mar 12 22:49:18 2014 
+** Last update Thu Mar 13 18:52:56 2014 
 */
 
 #ifndef OBJDUMP32_H
@@ -25,6 +25,6 @@ Elf32_Shdr*	load_section_header32(t_filemap* filemap,
 char*		load_section_name32(t_filemap* filemap,
 				    Elf32_Ehdr* elf,
 				    unsigned int indexstr);
-int		objdump32(t_filemap* filemap);
+int		objdump32(t_filemap* filemap, char* filename);
 
 #endif /* OBJDUMP32_H */

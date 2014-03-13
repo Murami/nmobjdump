@@ -5,7 +5,7 @@
 ** Login   <otoshigami@epitech.net>
 **
 ** Started on  Wed Mar 12 22:35:42 2014
-** Last update Wed Mar 12 23:06:36 2014 
+** Last update Thu Mar 13 18:53:32 2014 
 */
 
 #ifndef OBJDUMP_H
@@ -22,6 +22,7 @@
 # include <sys/mman.h>
 # include "filemap.h"
 # include "objdump32.h"
+# include "objdump64.h"
 
 uint16_t	gethost16(uint16_t value, void* elf);
 uint32_t	gethost32(uint32_t value, void* elf);
