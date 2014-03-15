@@ -5,21 +5,21 @@
 ## Login   <guerot_a@epitech.net>
 ## 
 ## Started on  Sun Mar  2 18:06:05 2014 anthony guerot
-## Last update Thu Mar 13 19:18:03 2014 
+## Last update Sat Mar 15 17:58:58 2014 
 ##
 
 ## FILES
 
-NAME		=	my_objdump
+NAME		=	my_nm
 
 SRC		=	main			\
 			endian			\
 			fmapaccess		\
 			map			\
-			32-bit/objdump32	\
+			32-bit/nm		\
 			32-bit/dump_section	\
 			32-bit/load		\
-			64-bit/objdump64	\
+			64-bit/nm		\
 			64-bit/dump_section	\
 			64-bit/load
 
@@ -37,7 +37,7 @@ DINC		=	include			\
 			template
 
 CFLAGS		=	-Wall			\
-			-Wextra
+			-Wextra			\
 
 ## LINKAGE
 

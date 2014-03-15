@@ -5,10 +5,10 @@
 ** Login   <otoshigami@epitech.net>
 **
 ** Started on  Tue Mar 11 18:32:58 2014
-** Last update Sat Mar 15 17:46:12 2014 
+** Last update Sat Mar 15 18:01:41 2014 
 */
 
-#include "objdump.h"
+#include "nm.h"
 
 unsigned char*	load_ident(t_filemap* filemap)
 {
@@ -31,10 +31,10 @@ int	main(int ac, char** av)
   if (ident == NULL)
     return (-1);
   if (ident[EI_CLASS] == ELFCLASS32 &&
-      objdump32(&filemap, filename) == -1)
+      nm32(&filemap, filename) == -1)
     return (-1);
   else if (ident[EI_CLASS] == ELFCLASS64 &&
-	   objdump64(&filemap, filename) == -1)
+	   nm64(&filemap, filename) == -1)
     return (-1);
   return (0);
 }

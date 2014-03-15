@@ -5,10 +5,10 @@
 ** Login   <otoshigami@epitech.net>
 **
 ** Started on  Wed Mar 12 22:32:23 2014
-** Last update Sat Mar 15 17:42:26 2014 
+** Last update Sat Mar 15 18:02:59 2014 
 */
 
-#include "objdump.h"
+#include "nm.h"
 
 void*		fmapaccess(t_filemap* filemap,
 			   unsigned long off,

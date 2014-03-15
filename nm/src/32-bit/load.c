@@ -5,10 +5,10 @@
 ** Login   <otoshigami@epitech.net>
 **
 ** Started on  Wed Mar 12 22:25:37 2014
-** Last update Sat Mar 15 17:40:57 2014 
+** Last update Sat Mar 15 18:02:58 2014 
 */
 
-#include "objdump.h"
+#include "nm.h"
 
 Elf32_Ehdr*	load_elf_header32(t_filemap* filemap)
 {
@@ -60,4 +60,28 @@ char*		load_section_name32(t_filemap* filemap,
       gethost32(names_section->sh_size, elf) - indexstr)
     return (NULL);
   return (string);
+}
+
+Elf32_Shdr*	load_section_by_name32(t_filemap* filemap, Elf32_Ehdr* elf,
+				       char* name)
+{
+  Elf32_Shdr*	section;
+  char*		string;
+  int		i;
+
+  i = 0;
+  while (i < gethost16(elf->e_shnum, elf))
+    {
+      section = load_section_header32(filemap, elf, i);
+      if (section == NULL)
+	return (NULL);
+      string = load_section_name32(filemap, elf,
+				   gethost32(section->sh_name, elf));
+      if (string == NULL)
+	return (NULL);
+      if (strcmp(string, name) == 0)
+	return (section);
+      i++;
+    }
+  return (NULL);
 }

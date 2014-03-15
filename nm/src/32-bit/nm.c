@@ -5,15 +5,14 @@
 ** Login   <otoshigami@epitech.net>
 **
 ** Started on  Wed Mar 12 22:21:23 2014
-** Last update Sat Mar 15 17:41:33 2014 
+** Last update Sat Mar 15 18:02:58 2014 
 */
 
-#include "objdump.h"
+#include "nm.h"
 
-static int	objdump_s32(t_filemap* filemap, Elf32_Ehdr* elf)
+static int	nmloop32(t_filemap* filemap, Elf32_Ehdr* elf)
 {
   Elf32_Shdr*	section;
-  char*		string;
   int		i;
 
   i = 0;
@@ -22,16 +21,12 @@ static int	objdump_s32(t_filemap* filemap, Elf32_Ehdr* elf)
       section = load_section_header32(filemap, elf, i);
       if (section == NULL)
 	return (-1);
-      string = load_section_name32(filemap, elf,
-				   gethost32(section->sh_name, elf));
-      if (string == NULL)
-	return (-1);
       if (gethost32(section->sh_size, elf) != 0 &&
 	  gethost32(section->sh_size, elf) != SHT_NOBITS &&
-	  strcmp(string, ".bss") != 0)
+	  (gethost32(section->sh_type, elf) == SHT_SYMTAB ||
+	   gethost32(section->sh_type, elf) == SHT_SYMTAB))
 	{
-	  printf("Contenue de la section %s:\n", string);
-	  if (dump_section_content32(filemap, section, string, elf) == -1)
+	  if (dump_symbols32(filemap, section, elf) == -1)
 	    return (-1);
 	}
       i++;
@@ -39,7 +34,7 @@ static int	objdump_s32(t_filemap* filemap, Elf32_Ehdr* elf)
   return (0);
 }
 
-int	objdump32(t_filemap* filemap, char* filename)
+int	nm32(t_filemap* filemap, char* filename)
 {
   Elf32_Ehdr*	elf;
 
@@ -47,7 +42,7 @@ int	objdump32(t_filemap* filemap, char* filename)
   elf = load_elf_header32(filemap);
   if (elf == NULL)
     return (-1);
-  if (objdump_s32(filemap, elf))
+  if (nmloop32(filemap, elf))
     return (-1);
   return (0);
 }

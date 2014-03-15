@@ -5,7 +5,7 @@
 ** Login   <otoshigami@epitech.net>
 **
 ** Started on  Wed Mar 12 22:23:21 2014
-** Last update Wed Mar 12 23:13:06 2014 
+** Last update Sat Mar 15 17:40:13 2014 
 */
 
 #include "objdump.h"
@@ -35,7 +35,8 @@ static void		print_raw_bytes32(t_dump_infos* dump_infos)
     }
 }
 
-static void		dump_section_content_byte32(void* offset, unsigned int section_size,
+static void		dump_section_content_byte32(void* offset,
+						    unsigned int section_size,
 						    t_dump_infos* dump_infos)
 {
   unsigned char*	pvalue;
@@ -59,15 +60,17 @@ static void		dump_section_content_byte32(void* offset, unsigned int section_size
     }
 }
 
-static void		dump_section_content_dword32(t_filemap* filemap, Elf32_Shdr* section,
-					     t_dump_infos* dump_infos, Elf32_Ehdr* elf)
+static void		dump_section_content_dword32(t_filemap* filemap,
+						     Elf32_Shdr* section,
+						     t_dump_infos* dump_infos,
+						     Elf32_Ehdr* elf)
 {
   printf(" %04x ", gethost32(section->sh_addr, elf) + dump_infos->offset);
   while (dump_infos->ndword < 4 && dump_infos->offset <
 	 gethost32(section->sh_size, elf))
     {
-      dump_section_content_byte32(filemap->map +
-				  gethost32(section->sh_offset, elf),
+      dump_section_content_byte32(filemap->map
+				  + gethost32(section->sh_offset, elf),
 				  gethost32(section->sh_size, elf), dump_infos);
       printf(" ");
       dump_infos->ndword++;
