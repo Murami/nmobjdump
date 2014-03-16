@@ -5,7 +5,7 @@
 ** Login   <otoshigami@epitech.net>
 **
 ** Started on  Wed Mar 12 22:23:21 2014
-** Last update Sat Mar 15 17:44:00 2014 
+** Last update Sun Mar 16 19:45:37 2014 guerot_a
 */
 
 #include "objdump.h"
@@ -65,7 +65,7 @@ static void		dump_section_content_dword64(t_filemap* filemap,
 						     t_dump_infos* dump_infos,
 						     Elf64_Ehdr* elf)
 {
-  printf(" %04llx ", gethost64(section->sh_addr, elf) + dump_infos->offset);
+  printf(" %04lx ", gethost64(section->sh_addr, elf) + dump_infos->offset);
   while (dump_infos->ndword < 4 && dump_infos->offset <
 	 gethost32(section->sh_size, elf))
     {

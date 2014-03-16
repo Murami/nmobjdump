@@ -5,7 +5,7 @@
 ** Login   <otoshigami@epitech.net>
 **
 ** Started on  Wed Mar 12 22:23:21 2014
-** Last update Sat Mar 15 18:05:09 2014 
+** Last update Sun Mar 16 19:45:05 2014 guerot_a
 */
 
 #include "nm.h"
@@ -40,7 +40,7 @@ void		print_symbol64(Elf64_Sym* sym, char* symname, Elf64_Ehdr* elf)
   if (!strlen(symname))
     return;
   if (gethost64(sym->st_value, elf))
-    printf("%08llx  ", gethost64(sym->st_value, elf));
+    printf("%08lx  ", gethost64(sym->st_value, elf));
   else
     printf("          ");
   printf("  %s\n", symname);
